@@ -47,9 +47,14 @@ public class vanishCommand implements CommandExecutor {
                     plugin.jedis.set("VanishPlayers", newList);
                     /* Turn off vanish code */
                 } else {
-                    vanishedPlayers = vanishedPlayers + "," + playerName;
+                    System.out.println(playerName + " added to list");
+                    if (Objects.equals(vanishPlayersIndividual[0], "")) {
+                        vanishedPlayers = playerName;
+                    } else {
+                        vanishedPlayers = vanishedPlayers + "," + playerName;
+                    }
+                    System.out.println(vanishedPlayers);
                     plugin.jedis.set("VanishPlayers", vanishedPlayers);
-
                     /* Turn on vanish code */
                 }
 

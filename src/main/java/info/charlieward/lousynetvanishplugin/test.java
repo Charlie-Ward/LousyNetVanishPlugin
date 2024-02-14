@@ -11,16 +11,13 @@ public class test {
     public static String playerName2 = "D4rthMonkey";
 
     public static void setup() {
-        jedis.set("VanishPlayers", "LousyBoi,LousyTest,Yay,Anyday,ThankYou");
+        jedis.set("VanishPlayers", "Test");
     }
 
     public static void main(String[] args) {
 
         setup();
         runCommand();
-        System.out.println(jedis.get("VanishPlayers"));
-        runCommand();
-        System.out.println(jedis.get("VanishPlayers"));
 
     }
 
@@ -40,6 +37,7 @@ public class test {
             System.out.println("Already on list removing needs to be done");
             for (int i = 0; i < vanishPlayersIndividual.length; i++) {
                 if (i != place) {
+                    System.out.println(newList);
                     newList = newList + vanishPlayersIndividual[i] + ",";
                 }
             }
@@ -48,7 +46,12 @@ public class test {
             System.out.println("Removed from list");
         } else {
             System.out.println(playerName + " added to list");
-            vanishedPlayers = vanishedPlayers + "," + playerName;
+            if (Objects.equals(vanishPlayersIndividual[0], "")) {
+                vanishedPlayers = playerName;
+            } else {
+                vanishedPlayers = vanishedPlayers + "," + playerName;
+            }
+            System.out.println(vanishedPlayers);
             jedis.set("VanishPlayers", vanishedPlayers);
         }
     }
