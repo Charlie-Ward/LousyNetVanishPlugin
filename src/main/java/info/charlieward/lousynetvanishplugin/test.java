@@ -11,7 +11,7 @@ public class test {
     public static String playerName2 = "D4rthMonkey";
 
     public static void setup() {
-        jedis.set("VanishPlayers", "Test");
+        jedis.set("VanishPlayers", "NewName");
     }
 
     public static void main(String[] args) {
@@ -41,7 +41,9 @@ public class test {
                     newList = newList + vanishPlayersIndividual[i] + ",";
                 }
             }
-            newList = newList.substring(0, newList.length()-1);
+            if (!newList.isEmpty()) {
+                newList = newList.substring(0, newList.length()-1);
+            }
             jedis.set("VanishPlayers", newList);
             System.out.println("Removed from list");
         } else {

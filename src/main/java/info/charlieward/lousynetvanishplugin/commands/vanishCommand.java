@@ -43,7 +43,9 @@ public class vanishCommand implements CommandExecutor {
                             newList = newList + vanishPlayersIndividual[i] + ",";
                         }
                     }
-                    newList = newList.substring(0, newList.length()-1);
+                    if (!newList.isEmpty()) {
+                        newList = newList.substring(0, newList.length()-1);
+                    }
                     plugin.jedis.set("VanishPlayers", newList);
                     /* Turn off vanish code */
                 } else {
