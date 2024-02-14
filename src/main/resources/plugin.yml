@@ -8,3 +8,4 @@ commands:
   vanish:
     usage: /vanish
     permission: LousyNetVanish.Vanish
+    aliases: [v]
