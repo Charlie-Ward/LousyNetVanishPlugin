@@ -1,0 +1,4 @@
+name: LousyNet-VanishPlugin
+version: '${project.version}'
+main: info.charlieward.lousynetvanishplugin.LousyNetVanishPlugin
+api-version: '1.17'
