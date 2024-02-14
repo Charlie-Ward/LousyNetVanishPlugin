@@ -2,3 +2,9 @@ name: LousyNet-VanishPlugin
 version: '${project.version}'
 main: info.charlieward.lousynetvanishplugin.LousyNetVanishPlugin
 api-version: '1.17'
+authors:
+  - LousyBoi
+commands:
+  vanish:
+    usage: /vanish
+    permission: LousyNetVanish.Vanish
