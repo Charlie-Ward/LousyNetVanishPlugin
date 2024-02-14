@@ -37,7 +37,7 @@ public class vanishCommand implements CommandExecutor {
                     }
                 }
                 if (alreadyVanished) {
-                    player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "Turning off vanish");
+                    player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "You are no longer vanished");
                     for (int i = 0; i < vanishPlayersIndividual.length; i++) {
                         if (i != place) {
                             newList = newList + vanishPlayersIndividual[i] + ",";
@@ -47,7 +47,7 @@ public class vanishCommand implements CommandExecutor {
                     plugin.jedis.set("VanishPlayers", newList);
                     /* Turn off vanish code */
                 } else {
-                    System.out.println(playerName + " added to list");
+                    player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "You are now vanished");
                     if (Objects.equals(vanishPlayersIndividual[0], "")) {
                         vanishedPlayers = playerName;
                     } else {
