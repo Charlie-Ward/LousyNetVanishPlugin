@@ -1,6 +1,7 @@
 package info.charlieward.lousynetvanishplugin.commands;
 
 import info.charlieward.lousynetvanishplugin.LousyNetVanishPlugin;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -47,7 +48,13 @@ public class vanishCommand implements CommandExecutor {
                         newList = newList.substring(0, newList.length()-1);
                     }
                     plugin.jedis.set("VanishPlayers", newList);
-                    /* Turn off vanish code */
+
+                    for (Player people : Bukkit.getOnlinePlayers()){
+                        if(!people.hasPermission("LousyNetVanish.Vanish")){
+                            people.showPlayer(plugin, player);
+                        }
+                    }
+
                 } else {
                     player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "You are now vanished");
                     if (Objects.equals(vanishPlayersIndividual[0], "")) {
@@ -57,7 +64,12 @@ public class vanishCommand implements CommandExecutor {
                     }
                     System.out.println(vanishedPlayers);
                     plugin.jedis.set("VanishPlayers", vanishedPlayers);
-                    /* Turn on vanish code */
+
+                    for (Player people : Bukkit.getOnlinePlayers()){
+                        if(!people.hasPermission("LousyNetVanish.Vanish")){
+                            people.hidePlayer(plugin, player);
+                        }
+                    }
                 }
 
             } else {
