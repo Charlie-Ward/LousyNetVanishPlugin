@@ -11,7 +11,7 @@ public class CustomConfig {
     private static File file;
     private static FileConfiguration customFile;
     public static void setup(){
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("LousyNet-PlayerCount-Utils").getDataFolder(), "lousynet-playercount-utils-config.yml");
+        file = new File(Bukkit.getServer().getPluginManager().getPlugin("LousyNet-VanishPlugin").getDataFolder(), "lousynet-vanishplugin-config.yml");
         if (!file.exists()) {
             try {
                 file.createNewFile();
