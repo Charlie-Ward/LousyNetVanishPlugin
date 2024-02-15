@@ -3,6 +3,7 @@ package info.charlieward.lousynetvanishplugin;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import info.charlieward.lousynetvanishplugin.commands.reloadCommand;
 import info.charlieward.lousynetvanishplugin.commands.vanishCommand;
 import info.charlieward.lousynetvanishplugin.files.CustomConfig;
 import info.charlieward.lousynetvanishplugin.listeners.playerJoin;
@@ -35,8 +36,8 @@ public final class LousyNetVanishPlugin extends JavaPlugin {
 
         getLogger().info("LousyNet-VanishPlugin v." + this.getDescription().getVersion() + " has loaded.");
 
-
         getCommand("vanish").setExecutor(new vanishCommand(this));
+        getCommand("vanishReload").setExecutor(new reloadCommand());
 
         getServer().getPluginManager().registerEvents(new playerJoin(this), this);
 
