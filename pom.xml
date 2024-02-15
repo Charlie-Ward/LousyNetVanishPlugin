@@ -6,7 +6,7 @@
 
   <groupId>info.charlieward</groupId>
   <artifactId>LousyNetVanishPlugin</artifactId>
-  <version>0.9</version>
+  <version>0.10</version>
   <packaging>jar</packaging>
 
   <name>LousyNet-VanishPlugin</name>
