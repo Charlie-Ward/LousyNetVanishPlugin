@@ -70,7 +70,7 @@ public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMess
         if(subchannel.equals("GetServer")){
             String name = in.readUTF();
             LousyNetVanishPlugin.getPlugin().servername = name;
-            System.out.println(name);
+//            System.out.println(name);
         }
     }
 }
