@@ -3,6 +3,7 @@ package info.charlieward.lousynetvanishplugin.commands;
 import info.charlieward.lousynetvanishplugin.LousyNetVanishPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -48,11 +49,17 @@ public class vanishCommand implements CommandExecutor {
                         newList = newList.substring(0, newList.length()-1);
                     }
                     plugin.jedis.set("VanishPlayers", newList);
-
                     for (Player people : Bukkit.getOnlinePlayers()){
                         if(!people.hasPermission("LousyNetVanish.Vanish")){
                             people.showPlayer(plugin, player);
                         }
+                    }
+                    switch (plugin.servername) {
+                        case "hub":
+                            player.setGameMode(GameMode.ADVENTURE);
+                            break;
+                        default:
+                            player.setGameMode(GameMode.SURVIVAL);
                     }
 
                 } else {
@@ -63,13 +70,7 @@ public class vanishCommand implements CommandExecutor {
                         vanishedPlayers = vanishedPlayers + "," + playerName;
                     }
                     plugin.jedis.set("VanishPlayers", vanishedPlayers);
-
-                    LousyNetVanishPlugin.getServerName();
-
-                    String serverName = plugin.servername;
-
-                    player.sendMessage(serverName);
-
+                    player.setGameMode(GameMode.SPECTATOR);
                     for (Player people : Bukkit.getOnlinePlayers()){
                         if(!people.hasPermission("LousyNetVanish.Vanish")){
                             people.hidePlayer(plugin, player);

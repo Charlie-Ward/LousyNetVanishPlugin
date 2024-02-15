@@ -31,6 +31,11 @@ public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMess
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
         getLogger().info("LousyNet-VanishPlugin v." + this.getDescription().getVersion() + " has loaded.");
+
+        getLogger().info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        getLogger().info("!!!!!!!!LousyNet-VanishPlugin - PLEASE LOG ON AND RUN /GETSERVERNAME TO FINISH SETUP!!!!!!!!");
+        getLogger().info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
         jedis.set("VanishPlayers", "");
 
 
