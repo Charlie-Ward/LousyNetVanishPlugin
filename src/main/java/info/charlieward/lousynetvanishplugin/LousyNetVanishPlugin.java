@@ -28,8 +28,6 @@ public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMess
         getLogger().info("LousyNet-VanishPlugin v." + this.getDescription().getVersion() + " has loaded.");
         jedis.set("VanishPlayers", "");
 
-        getServerName();
-        System.out.println(servername);
 
         getCommand("vanish").setExecutor(new vanishCommand(this));
 
@@ -49,12 +47,11 @@ public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMess
         return plugin;
     }
 
-    public static void getServerName() {
+    public static void getServerName(Player player) {
         try {
             ByteArrayOutputStream b = new ByteArrayOutputStream();
             DataOutputStream out = new DataOutputStream(b);
             out.writeUTF("GetServer");
-            Player player = (Player) Bukkit.getOnlinePlayers().toArray()[0];
             player.sendPluginMessage(LousyNetVanishPlugin.getPlugin(), "BungeeCord", b.toByteArray());
         } catch (Exception e){
             System.out.println("Error while getting the server name");
