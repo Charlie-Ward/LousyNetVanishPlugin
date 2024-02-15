@@ -20,8 +20,14 @@ public class getServerName implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
-            LousyNetVanishPlugin.getServerName();
-            player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "The plugin is now set up and ready to use");
+            if (player.hasPermission("LousyNetVanishPlugin.Setup")) {
+                if (plugin.servername == null) {
+                    LousyNetVanishPlugin.getServerName();
+                    player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "The plugin is now set up and ready to use");
+                } else {
+                    player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "The setup command has already been run on this server");
+                }
+            }
         }
         return false;
     }
