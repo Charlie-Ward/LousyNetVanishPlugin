@@ -18,12 +18,15 @@ import java.io.DataOutputStream;
 public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMessageListener {
 
     public Jedis jedis = new Jedis();
-    private static LousyNetVanishPlugin plugin;
 
+    private static LousyNetVanishPlugin plugin;
     public String servername;
 
     @Override
     public void onEnable() {
+
+        plugin = this;
+
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
@@ -54,7 +57,7 @@ public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMess
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("GetServer");
         Player player = (Player)Bukkit.getOnlinePlayers().toArray()[0];
-        player.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
+        player.sendPluginMessage(LousyNetVanishPlugin.getPlugin(), "BungeeCord", out.toByteArray());
     }
 
     @Override
