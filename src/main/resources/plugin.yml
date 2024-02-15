@@ -9,3 +9,4 @@ commands:
     usage: /vanish
     permission: LousyNetVanish.Vanish
     aliases: [v]
+  getServerName:

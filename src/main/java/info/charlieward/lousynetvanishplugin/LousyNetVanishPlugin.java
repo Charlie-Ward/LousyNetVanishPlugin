@@ -2,6 +2,7 @@ package info.charlieward.lousynetvanishplugin;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
+import info.charlieward.lousynetvanishplugin.commands.getServerName;
 import info.charlieward.lousynetvanishplugin.commands.vanishCommand;
 import info.charlieward.lousynetvanishplugin.listeners.playerJoin;
 import org.bukkit.Bukkit;
@@ -30,6 +31,7 @@ public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMess
 
 
         getCommand("vanish").setExecutor(new vanishCommand(this));
+        getCommand("getServerName").setExecutor(new getServerName(this));
 
         getServer().getPluginManager().registerEvents(new playerJoin(this), this);
 
