@@ -67,7 +67,7 @@ public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMess
         }
         ByteArrayDataInput in = ByteStreams.newDataInput(message);
         String subchannel = in.readUTF();
-        if (subchannel.equals("SomeSubChannel")) {
+        if(subchannel.equals("GetServer")){
             String name = in.readUTF();
             LousyNetVanishPlugin.getPlugin().servername = name;
             System.out.println(name);
