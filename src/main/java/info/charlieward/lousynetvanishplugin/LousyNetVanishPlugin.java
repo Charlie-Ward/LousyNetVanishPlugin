@@ -36,9 +36,6 @@ public final class LousyNetVanishPlugin extends JavaPlugin {
         getLogger().info("LousyNet-VanishPlugin v." + this.getDescription().getVersion() + " has loaded.");
 
 
-        jedis.set("VanishPlayers", "");
-
-
         getCommand("vanish").setExecutor(new vanishCommand(this));
 
         getServer().getPluginManager().registerEvents(new playerJoin(this), this);
