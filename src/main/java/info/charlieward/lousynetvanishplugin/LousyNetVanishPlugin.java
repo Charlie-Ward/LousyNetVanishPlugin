@@ -54,7 +54,7 @@ public final class LousyNetVanishPlugin extends JavaPlugin implements PluginMess
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
         out.writeUTF("GetServer");
         Player player = (Player)Bukkit.getOnlinePlayers().toArray()[0];
-        player.sendPluginMessage(LousyNetVanishPlugin.getPlugin(), "BungeeCord", out.toByteArray());
+        player.sendPluginMessage(plugin, "BungeeCord", out.toByteArray());
     }
 
     @Override
