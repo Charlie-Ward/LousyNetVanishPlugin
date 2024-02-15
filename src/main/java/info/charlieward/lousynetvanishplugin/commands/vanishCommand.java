@@ -62,8 +62,13 @@ public class vanishCommand implements CommandExecutor {
                     } else {
                         vanishedPlayers = vanishedPlayers + "," + playerName;
                     }
-                    System.out.println(vanishedPlayers);
                     plugin.jedis.set("VanishPlayers", vanishedPlayers);
+
+                    LousyNetVanishPlugin.getServerName();
+
+                    String serverName = plugin.servername;
+
+                    player.sendMessage(serverName);
 
                     for (Player people : Bukkit.getOnlinePlayers()){
                         if(!people.hasPermission("LousyNetVanish.Vanish")){
