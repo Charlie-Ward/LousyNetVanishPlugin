@@ -19,7 +19,7 @@ public class getServerName implements CommandExecutor {
         if (commandSender instanceof Player) {
             Player player = (Player) commandSender;
             LousyNetVanishPlugin.getServerName();
-            System.out.println(plugin.servername);
+            System.out.println("Inside command " + plugin.servername);
         }
         return false;
     }
