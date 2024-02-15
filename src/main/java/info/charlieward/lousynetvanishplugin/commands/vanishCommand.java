@@ -65,6 +65,7 @@ public class vanishCommand implements CommandExecutor {
                             break;
                         case "adventure":
                             player.setGameMode(GameMode.ADVENTURE);
+                            break;
                         default:
                             player.setGameMode(GameMode.SURVIVAL);
                     }
