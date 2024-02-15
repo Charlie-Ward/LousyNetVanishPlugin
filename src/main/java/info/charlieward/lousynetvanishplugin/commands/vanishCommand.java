@@ -1,6 +1,7 @@
 package info.charlieward.lousynetvanishplugin.commands;
 
 import info.charlieward.lousynetvanishplugin.LousyNetVanishPlugin;
+import info.charlieward.lousynetvanishplugin.files.CustomConfig;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -54,13 +55,20 @@ public class vanishCommand implements CommandExecutor {
                             people.showPlayer(plugin, player);
                         }
                     }
-                    switch (plugin.servername) {
-                        case "hub":
-                            player.setGameMode(GameMode.ADVENTURE);
+
+                    switch (CustomConfig.get().getString("gamemode")){
+                        case "survival":
+                            player.setGameMode(GameMode.SURVIVAL);
                             break;
+                        case "creative":
+                            player.setGameMode(GameMode.CREATIVE);
+                            break;
+                        case "adventure":
+                            player.setGameMode(GameMode.ADVENTURE);
                         default:
                             player.setGameMode(GameMode.SURVIVAL);
                     }
+
 
                 } else {
                     player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "You are now vanished");
