@@ -43,6 +43,7 @@ public class vanishCommand implements CommandExecutor {
                 }
                 if (alreadyVanished) {
                     player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "You are no longer vanished");
+                    player.removePotionEffect(PotionEffectType.INVISIBILITY);
                     for (int i = 0; i < vanishPlayersIndividual.length; i++) {
                         if (i != place) {
                             newList = newList + vanishPlayersIndividual[i] + ",";
@@ -55,6 +56,7 @@ public class vanishCommand implements CommandExecutor {
                     for (Player people : Bukkit.getOnlinePlayers()){
                         if(!people.hasPermission("LousyNetVanish.Vanish")){
                             people.showPlayer(plugin, player);
+                            System.out.println(CustomConfig.get().getString("join/leave messages - True or False"));
                             if (Objects.equals(CustomConfig.get().getString("join/leave messages - True or False"), "True")) {
                                 people.sendMessage(ChatColor.YELLOW + playerName + "has joined the game");
                             }
@@ -76,7 +78,7 @@ public class vanishCommand implements CommandExecutor {
                     }
                 } else {
                     player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "You are now vanished");
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10000, 1));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100000000, 1));
                     if (Objects.equals(vanishPlayersIndividual[0], "")) {
                         vanishedPlayers = playerName;
                     } else {
