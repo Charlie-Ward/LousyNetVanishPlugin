@@ -9,6 +9,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.Objects;
 
@@ -53,6 +55,9 @@ public class vanishCommand implements CommandExecutor {
                     for (Player people : Bukkit.getOnlinePlayers()){
                         if(!people.hasPermission("LousyNetVanish.Vanish")){
                             people.showPlayer(plugin, player);
+                            if (Objects.equals(CustomConfig.get().getString("join/leave messages - True or False"), "True")) {
+                                people.sendMessage(ChatColor.YELLOW + playerName + "has joined the game");
+                            }
                         }
                     }
 
@@ -69,10 +74,9 @@ public class vanishCommand implements CommandExecutor {
                         default:
                             player.setGameMode(GameMode.SURVIVAL);
                     }
-
-
                 } else {
                     player.sendMessage(ChatColor.BLUE + "[LousyNet-VanishPlugin] " + ChatColor.WHITE + "You are now vanished");
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 10000, 1));
                     if (Objects.equals(vanishPlayersIndividual[0], "")) {
                         vanishedPlayers = playerName;
                     } else {
@@ -83,6 +87,9 @@ public class vanishCommand implements CommandExecutor {
                     for (Player people : Bukkit.getOnlinePlayers()){
                         if(!people.hasPermission("LousyNetVanish.Vanish")){
                             people.hidePlayer(plugin, player);
+                            if (Objects.equals(CustomConfig.get().getString("join/leave messages - True or False"), "True")) {
+                                people.sendMessage(ChatColor.YELLOW + playerName + "has left the game");
+                            }
                         }
                     }
                 }

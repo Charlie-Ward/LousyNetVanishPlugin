@@ -31,6 +31,7 @@ public final class LousyNetVanishPlugin extends JavaPlugin {
         CustomConfig.setup();
         CustomConfig.get().addDefault("Choose the gamemode when leaving vanish", "adventure,survival,creative");
         CustomConfig.get().addDefault("gamemode","");
+        CustomConfig.get().addDefault("join/leave messages - True or False", "");
         CustomConfig.get().options().copyDefaults(true);
         CustomConfig.save();
 
