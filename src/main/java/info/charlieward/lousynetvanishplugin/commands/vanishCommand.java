@@ -56,10 +56,9 @@ public class vanishCommand implements CommandExecutor {
                     for (Player people : Bukkit.getOnlinePlayers()){
                         if(!people.hasPermission("LousyNetVanish.Vanish")){
                             people.showPlayer(plugin, player);
-                            System.out.println(CustomConfig.get().getString("join/leave messages - True or False"));
-                            if (Objects.equals(CustomConfig.get().getString("join/leave messages - True or False"), "true")) {
-                                people.sendMessage(ChatColor.YELLOW + playerName + " has joined the game");
-                            }
+                        }
+                        if (Objects.equals(CustomConfig.get().getString("join/leave messages - True or False"), "true")) {
+                            people.sendMessage(ChatColor.YELLOW + playerName + " has joined the game");
                         }
                     }
 
@@ -89,9 +88,9 @@ public class vanishCommand implements CommandExecutor {
                     for (Player people : Bukkit.getOnlinePlayers()){
                         if(!people.hasPermission("LousyNetVanish.Vanish")){
                             people.hidePlayer(plugin, player);
-                            if (Objects.equals(CustomConfig.get().getString("join/leave messages - True or False"), "true")) {
-                                people.sendMessage(ChatColor.YELLOW + playerName + " has left the game");
-                            }
+                        }
+                        if (Objects.equals(CustomConfig.get().getString("join/leave messages - True or False"), "true")) {
+                            people.sendMessage(ChatColor.YELLOW + playerName + " has left the game");
                         }
                     }
                 }
